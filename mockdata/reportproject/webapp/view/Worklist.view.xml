@@ -1,0 +1,120 @@
+<mvc:View
+	controllerName="ux.reportproject.controller.Worklist"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.f.semantic">
+
+	<semantic:SemanticPage
+		id="page"
+		headerPinnable="false"
+		toggleHeaderOnTitleClick="false">
+
+		<semantic:titleHeading>
+			<Title
+				text="{i18n>worklistTitle}"
+				level="H2"/>
+		</semantic:titleHeading>
+
+		<semantic:content>
+			<Table
+				id="table"
+				width="auto"
+				items="{
+					path: '/Products'
+			
+				}"
+				noDataText="{worklistView>/tableNoDataText}"
+				busyIndicatorDelay="{worklistView>/tableBusyDelay}"
+				growing="true"
+				growingScrollToLoad="true"
+				updateFinished=".onUpdateFinished">
+
+				<headerToolbar>
+					<OverflowToolbar>
+						<Title
+							id="tableHeader"
+							text="{worklistView>/worklistTableTitle}"
+							level="H3"/>
+						<ToolbarSpacer />
+						<SearchField
+							id="searchField"
+							tooltip="{i18n>worklistSearchTooltip}"
+							search=".onSearch">
+							<layoutData>
+								<OverflowToolbarLayoutData
+									maxWidth="200px"
+									priority="NeverOverflow"/>
+							</layoutData>
+						</SearchField>
+					</OverflowToolbar>
+				</headerToolbar>
+
+				<columns>
+					<Column id="nameColumn">
+						<Text text="{i18n>tableNameColumnTitle}" id="nameColumnTitle"/>
+					</Column>
+					<Column id="DesColumn">
+						<Text text="{i18n>ProductDescription}" id="DescColumnTitle"/>
+					</Column>
+
+					<Column id="PackTypeColumn">
+						<Text text="{i18n>Packtype}" id="PacktypeColumnTitle"/>
+					</Column>
+					<Column id="PacksizeColumn">
+						<Text text="{i18n>Packsize}" id="PacksizeColumnTitle"/>
+					</Column>
+					<Column id="GHSColumn">
+						<Text text="{i18n>GHS}" id="GHSColumnTitle"/>
+					</Column>
+
+					<Column id="classifyColumn">
+						<Text text="{i18n>classify}" id="classifyColumnTitle"/>
+					</Column>
+					<Column id="ShipmentColumn">
+						<Text text="{i18n>Shipment}" id="ShipmentColumnTitle"/>
+					</Column>
+					<Column id="StatusColumn">
+						<Text text="{i18n>Status}" id="StatusColumnTitle"/>
+					</Column>
+					<Column id="ShippmentDateColumn">
+						<Text text="{i18n>ShippmentDate}" id="ShippmentDateColumnTitle"/>
+					</Column>
+					<Column id="NotificationdateColumn">
+						<Text text="{i18n>Notificationdate}" id="NotificationdateColumnTitle"/>
+					</Column>
+					<Column id="PriceColumn" hAlign="End">
+						<Text text="{i18n>Price}" id="PriceColumnTitle"/>
+					</Column>
+				</columns>
+
+				<items>
+					<ColumnListItem
+						type="Navigation"
+						press=".onPress">
+						<cells>
+							<ObjectIdentifier
+								title="{ProductID}"/>
+							        <Text text="{ProductDescription}"></Text>
+									<Text text="{Packtype}"></Text>	
+									<Text text="{Packsize}"></Text>	
+									<Text text="{GHS}"></Text>
+										<Text text="{classify}"></Text>
+											<Text text="{Shipment}"></Text>
+											<Text text="{Status}"></Text>
+											<Text text="{ShippmentDate}"> </Text>
+												<Text text="{Notificationdate}"></Text>
+													<Text text="{Price}"></Text>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</semantic:content>
+
+		<semantic:sendEmailAction>
+			<semantic:SendEmailAction id="shareEmail" press=".onShareEmailPress"/>
+		</semantic:sendEmailAction>
+
+
+	</semantic:SemanticPage>
+
+</mvc:View>
